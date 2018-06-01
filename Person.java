@@ -1,3 +1,13 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author user
+ */
 
 import java.util.Scanner;
 
@@ -19,8 +29,37 @@ public class Person {
     char gender;
     Scanner in = new Scanner(System.in);
     
-    void setName(){ 
-        System.out.println("Enter Name: ");
+    //default constructor
+    Person(){
+        this.name = "Unknown";
+        this.address = "Unknown";
+        this.phoneNo = "Unknown";
+        this.age = 1;
+        this.gender = 'U';
+    }
+    
+    //parameterized constructor
+    Person(String name, String address, 
+            String phoneNo, char gender, int age){
+        this.name = name;
+        this.address = address;
+        this.phoneNo = phoneNo;
+        this.gender = gender;
+        this.age = age;       
+    }
+    
+    //copy constructor
+    Person(Person anotherPerson){
+        this.name = anotherPerson.name;
+        this.address = anotherPerson.address;
+        this.age = anotherPerson.age;
+        this.phoneNo = anotherPerson.phoneNo;
+        this.gender = anotherPerson.gender;
+    }
+    
+    void setName(){
+        
+        System.out.println("Enter name :");
         name = in.nextLine();
     }
     
@@ -29,7 +68,7 @@ public class Person {
     }
     
     void setAddress(){
-        System.out.println("Enter Address : ");
+        System.out.println("Enter address : ");
         address = in.nextLine();
     }
     
@@ -38,19 +77,18 @@ public class Person {
     }
     
     void setGender(){
-        System.out.println("Enter Gender : ");
+        System.out.println("Enter gender : ");
         gender = (char)in.nextInt();
-        in.nextLine();
     }
+    
     char getGender(){
         return gender;
     }
     
     void setAge(){
-        System.out.println("Enter Age : ");
-        //age = in.nextInt();
-        //age = in.nextLine();
-        age = Integer.parseInt(in.nextLine());
+        System.out.println("Enter age : ");    
+        age = in.nextInt();
+       
     }
     
     int getAge(){
@@ -58,7 +96,7 @@ public class Person {
     }
     
     void setPhoneNo(){
-        System.out.println("Enter Phone : ");
+        System.out.println("Enter phone no : ");
         phoneNo = in.nextLine();
     }
     
@@ -66,21 +104,23 @@ public class Person {
         return phoneNo;
     }
     
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString(){
-        String data = "Name : " + name + "\n" + "Address : " + address + "\n" + "PhoneNo : " + phoneNo + "\n" + "Gender : " + gender + "\n" + "Age : " + age + "\n";
+        String data = "Name : " + name + "\n" +
+                "Address : " + address + "\n" +
+                "Phone No : " + phoneNo + "\n" +
+                "Gender : " + gender + "\n" +
+                "Age : " + age + "\n";
+        
         return data;
     }
     
     void setData(){
         setName();
         setAddress();
-        setPhoneNo();
-        setAge();
+        setPhoneNo();          
         setGender();
+        setAge();
+        
     }
 }
